@@ -1,6 +1,6 @@
 {
 	"name": "compep",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Competitive programming watch client",
 	"license": "MIT",
 	"repository": "elzup/compep",
@@ -17,13 +17,22 @@
 		"cli": "node cli.js",
 		"test": "ava"
 	},
-	"files": ["index.js", "cli.js", "template"],
-	"keywords": ["cli-app", "cli", ""],
+	"files": [
+		"index.js",
+		"cli.js",
+		"template"
+	],
+	"keywords": [
+		"cli-app",
+		"cli",
+		""
+	],
 	"dependencies": {
 		"chalk": "^2.1.0",
 		"diff": "^3.3.0",
 		"lodash": "^4.17.4",
 		"meow": "^3.7.0",
+		"node-watch": "^0.6.0",
 		"sleep-promise": "^2.0.0"
 	},
 	"devDependencies": {

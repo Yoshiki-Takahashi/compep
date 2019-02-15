@@ -1,5 +1,6 @@
 'use strict'
 const fs = require('fs')
+const watcher = require('node-watch')
 const { execSync } = require('child_process')
 const chalk = require('chalk')
 const _ = require('lodash')
@@ -136,10 +137,10 @@ const Lang = { cpp: 'cpp', py: 'py' }
 // Check language main.cpp or main.py
 // default: cpp
 const getMode = () => {
-	if (fs.existsSync(targetFilePython)) {
-		return Lang.py
-	} else {
+	if (fs.existsSync(targetFile)) {
 		return Lang.cpp
+	} else {
+		return Lang.py
 	}
 }
 
@@ -162,9 +163,9 @@ async function startCpp() {
 	)
 
 	command = `./${outputFile}`
-	fs.watch(targetFile, compileListener)
+	watcher(targetFile, {recursive: true}, compileListener)
 	cases = loadTestcase(testcaseFile)
-	fs.watch(testcaseFile, testcaseListener)
+	watcher(testcaseFile, {recursive: true}, testcaseListener)
 	compileListener(null, targetFile)
 }
 
@@ -173,9 +174,9 @@ async function startPython() {
 		return
 	}
 	command = `python3 ${targetFilePython}`
-	fs.watch(targetFilePython, runTestCase)
+	watcher(targetFilePython, {recursive: true}, runTestCase)
 	cases = loadTestcase(testcaseFile)
-	fs.watch(testcaseFile, testcaseListener)
+	watcher(testcaseFile, {recursive: true}, testcaseListener)
 	compileState = true
 	runTestCase()
 }
