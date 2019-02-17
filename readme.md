@@ -26,6 +26,8 @@ Testcase input/output formt.
 testcase/main.testcase.txt
 
 ```
+Timeout milliseconds
+====
 input values of case1
 ----
 output values of case1
