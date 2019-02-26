@@ -142,7 +142,7 @@ function runTestCase() {
 
 const compileListener = async (event, filename) => {
     event && console.log(`Target changed: ` + chalk.bold(filename) + `.`)
-    compileState = executeCommand(`g++ ${targetFile} -o ${outputFile}`)
+    compileState = executeCommand(`g++ -std=c++14 ${targetFile} -o ${outputFile}`)
     runTestCase()
 }
 
